@@ -1,0 +1,21 @@
+ body {
+background-color: whitesmoke !important;
+}
+
+.avatar{
+    padding: 0px !important;
+}
+ .headresume{
+     background-color: gainsboro;
+ }
+ .objective {
+  position: relative;
+ }
+
+ .edit {
+     color: white;
+     position: absolute;
+     right: 30px;
+     text-decoration-line: underline;
+ }
+
