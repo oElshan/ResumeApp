@@ -1,7 +1,19 @@
  body {
 background-color: whitesmoke !important;
 }
+/*.img-responsive {*/
+    /*max-width: 20%;*/
+/*}*/
+ .container .profile {
+     position: relative;
 
+ }
+.avatarimg {
+    margin-bottom: 0;
+    border: none;
+    padding: 0px;
+
+}
 .avatar{
     padding: 0px !important;
 }
@@ -11,11 +23,13 @@ background-color: whitesmoke !important;
  .objective {
   position: relative;
  }
-
+.panel-heading {
+    position: relative;
+}
  .edit {
      color: white;
-     position: absolute;
-     right: 30px;
      text-decoration-line: underline;
+     position: absolute;
+     right: 10px;
  }
 
