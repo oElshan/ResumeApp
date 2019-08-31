@@ -17,5 +17,7 @@
         <sitemesh:write property='...'/>
 
         <jsp:include page="../section/js.jsp"/>
+        <jsp:include page="../section/footer.jsp"/>
+
     </body>
 </html>

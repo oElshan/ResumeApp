@@ -32,4 +32,13 @@ background-color: whitesmoke !important;
      position: absolute;
      right: 10px;
  }
-
+ .welcomepanel {
+     position: relative;
+ }
+ .imgwelcome {
+     position: absolute;
+     left: 10px;
+ }
+.footer {
+border-bottom: #cccccc ;
+}
