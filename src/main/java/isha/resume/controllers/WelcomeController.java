@@ -17,8 +17,8 @@ import java.io.IOException;
 public class WelcomeController {
     private final static Logger LOGGER = Logger.getLogger(WelcomeController.class);
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public String showhome() {
-//
-//    }
+    @RequestMapping(method = RequestMethod.GET)
+    public String showhome() {
+        return "/welcome";
+    }
 }

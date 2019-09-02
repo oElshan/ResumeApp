@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Controller
-@WebServlet("/test")
 public class TestController extends HttpServlet {
-    private final static Logger LOGGER = Logger.getLogger(SerchConroller.class);
+    private final static Logger LOGGER = Logger.getLogger(ProfileController.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

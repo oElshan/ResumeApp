@@ -1,7 +1,6 @@
 package isha.resume.controllers;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.ServletException;
@@ -11,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Controller
-@WebServlet("/profile")
-public class SerchConroller extends HttpServlet {
-    private final static Logger LOGGER = Logger.getLogger(SerchConroller.class);
+public class ProfileController extends HttpServlet {
+    private final static Logger LOGGER = Logger.getLogger(ProfileController.class);
 
 
 
