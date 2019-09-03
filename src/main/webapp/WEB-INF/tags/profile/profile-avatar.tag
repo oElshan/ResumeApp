@@ -1,12 +1,12 @@
 <%@ tag pageEncoding="UTF-8" %>
 <div class="panel panel-default avatar" >
     <div class="panel-body avatar">
-        <!--<div class="row  center-block ">-->
-        <!----
-     <!--</div>-->
+        <div class="row  center-block ">
         <a href="#" class="thumbnail avatarimg ">
-            <img src="media/Java.png"   alt="..."  >
+            <img src="../../../media/logo.png"   alt="..."  >
         </a>
+        </div>
+
         <div class="row ">
             <h3 class="text-center ">Elshan Orudzhov</h3>
             <h6 class="text-center initialism">Moscow , Russia</h6>

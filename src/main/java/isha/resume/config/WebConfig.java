@@ -20,7 +20,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-// TODO: 02/09/2019  Реалтзовать статический котент , настроить Handler (обработчик механизма отображения)
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("../webapp/media/*");
+        registry.addResourceHandler("../resources/*");
+        registry.addResourceHandler("../webapp/static/*");
+    }
+
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    // TODO: 02/09/2019  Реалтзовать статический котент , настроить Handler (обработчик механизма отображения)
     //TODO: написать контроллер
     //TODO: далее релизовать ROOTconfig
 
