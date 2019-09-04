@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"isha.resume"})
+@ComponentScan(basePackages = {"isha.resume.controllers","isha.resume.filters"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -31,10 +31,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-
-    // TODO: 02/09/2019  Реалтзовать статический котент , настроить Handler (обработчик механизма отображения)
-    //TODO: написать контроллер
-    //TODO: далее релизовать ROOTconfig
-
 
 }
