@@ -2,17 +2,17 @@ package isha.resume.service;
 
 import isha.resume.entity.Profile;
 import isha.resume.repository.ProfileRepository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Comparator;
 import java.util.List;
 
-@org.springframework.stereotype.Service
-public class Service {
+@Service
+public class ProfileService {
 
     ProfileRepository profileRepository;
 
-    public Service(ProfileRepository profileRepository) {
+    public ProfileService(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
 
