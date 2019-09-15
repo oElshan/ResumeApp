@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
@@ -45,11 +46,6 @@ public class RootConfig {
         return dataSource;
     }
 
-//    @Bean
-//    public JdbcTemplate getJdbcTemplate() {
-//        return new JdbcTemplate(getDataSource());
-//    }
-
 
     @Bean
     public JpaVendorAdapter getJpaVendorAdapter() {
@@ -76,6 +72,13 @@ public class RootConfig {
         emf.setPackagesToScan("isha.resume.entity");
         emf.afterPropertiesSet();
         return emf.getNativeEntityManagerFactory();
+    }
+
+    @Bean
+    public JpaTransactionManager getTransactionManager() {
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory());
+        return jpaTransactionManager;
     }
 
 }

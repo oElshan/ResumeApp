@@ -3,7 +3,7 @@
     <div class="panel-heading">
         <i class="fa fa-certificate" aria-hidden="true"></i>
         <span>Certificates</span>
-        <a href="#" class="edit">
+        <a href="/edit" class="edit">
             <i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
     </div>
     <div class="panel-body">

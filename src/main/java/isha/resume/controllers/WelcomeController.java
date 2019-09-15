@@ -13,4 +13,9 @@ public class WelcomeController {
     public String showhome() {
         return "/welcome";
     }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String edit() {
+        return "/edit";
+    }
 }

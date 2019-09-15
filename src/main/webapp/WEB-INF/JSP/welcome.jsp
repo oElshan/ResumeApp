@@ -10,10 +10,9 @@
 
         </div>
     </div>
-    <%--<div class="row worker">--%>
-        <%--<div class="panel panel-default">--%>
-            <%--<div class="panel-body img-responsive">--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
+    <div class="row">
+
+        dsaldmaskd
+
+    </div>
 </div>

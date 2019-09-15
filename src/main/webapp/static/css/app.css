@@ -48,3 +48,16 @@ background-color: whitesmoke !important;
 
  }
 
+ .nav-tabs > li {
+     /*float:none;*/
+     display:inline-block;
+     zoom:1;
+ }
+ .nav-tabs {
+     text-align:center;
+ }
+
+ .tab-pane {
+     background-color: white !important;
+
+ }

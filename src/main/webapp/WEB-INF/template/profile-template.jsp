@@ -15,9 +15,8 @@
     <body>
         <jsp:include page="../section/navbar.jsp"/>
         <sitemesh:write property='...'/>
-
+        <%--<jsp:include page="../section/footer.jsp"/>--%>
         <jsp:include page="../section/js.jsp"/>
-        <jsp:include page="../section/footer.jsp"/>
 
     </body>
 </html>
