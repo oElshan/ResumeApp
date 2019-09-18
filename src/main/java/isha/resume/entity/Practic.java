@@ -1,9 +1,6 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -17,6 +14,10 @@ public class Practic {
     private String respontibilities;
     private String demo;
     private String src;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    Profile profile;
 
     @Id
     @Column(name = "id")

@@ -1,9 +1,6 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -13,8 +10,14 @@ public class Certificate {
     private String smallImage;
     private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    Profile profile;
+
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "certificate_seq" ,schema = "certificate_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "certificate_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

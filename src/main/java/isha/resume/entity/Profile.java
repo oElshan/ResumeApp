@@ -1,12 +1,14 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Profile {
+public class Profile  implements Serializable {
     private long id;
     private String login;
     private String pasword;
@@ -32,8 +34,36 @@ public class Profile {
     private String stackoverflow;
     private Date birthDay;
 
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    private List<Certificate> certificates;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OrderBy("beginYear DESC ,finishYaer DESC,id DESC ")
+    private List<Education> educations ;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OrderBy("finishDate desc ")
+    private List<Course> courses ;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OrderBy("name ASC ")
+    private List<Hobby> hobbies ;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    private List<Language> language ;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OrderBy("finishDate DESC ")
+    private List<Practic> practics ;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OrderBy("id ASC ")
+    private List<Skill> skills ;
+
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "profile_seq" ,schema = "profile_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

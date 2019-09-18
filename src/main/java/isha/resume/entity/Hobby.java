@@ -1,9 +1,6 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +8,14 @@ public class Hobby {
     private long id;
     private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    Profile profile;
+
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "hobby_seq" ,schema = "hobby_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "hobby_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

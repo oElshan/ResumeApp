@@ -1,9 +1,6 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -14,8 +11,14 @@ public class Course {
     private String shcool;
     private Date finishDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    Profile profile;
+
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "course_seq" ,schema = "course_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "course_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }
