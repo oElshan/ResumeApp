@@ -13,7 +13,9 @@ public class Skill {
     Profile profile;
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "skill_seq" ,schema = "skill_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "skill_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

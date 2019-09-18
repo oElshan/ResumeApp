@@ -3,6 +3,7 @@ package isha.resume.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
+
 @Entity
 public class Language {
     private long id;
@@ -14,6 +15,7 @@ public class Language {
     @JoinColumn(name = "id_profile",nullable = false)
     Profile profile;
 
+    // TODO: 18/09/2019 создать тип атрибуты lavel и type через enum
     @Id
     @SequenceGenerator(name = "language_seq" ,schema = "language_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "language_seq")

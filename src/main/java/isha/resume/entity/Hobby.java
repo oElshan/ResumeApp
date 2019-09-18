@@ -12,6 +12,8 @@ public class Hobby {
     @JoinColumn(name = "id_profile",nullable = false)
     Profile profile;
 
+    // TODO: 18/09/2019 добавить @Transient поле selected boolean для отображения выбранных хобби
+    // TODO: 18/09/2019 добавить Comparable интерфейс
     @Id
     @SequenceGenerator(name = "hobby_seq" ,schema = "hobby_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "hobby_seq")

@@ -14,13 +14,16 @@ public class Practic {
     private String respontibilities;
     private String demo;
     private String src;
+    // TODO: 18/09/2019  нужны дополнительные поля @Transient для обоработки форм при считывания данных из  страницы
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_profile",nullable = false)
     Profile profile;
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "practic_seq" ,schema = "practic_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "practic_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }
