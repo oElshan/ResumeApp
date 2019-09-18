@@ -1,9 +1,6 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Objects;
@@ -310,4 +307,5 @@ public class Profile {
     public int hashCode() {
         return Objects.hash(id, login, pasword, firstName, lastName, midleName, email, phone, uid, coutry, city, summary, objective, largePhoto, smallPhoto, info, comleted, created, vkontakte, skype, facebook, github, stackoverflow, birthDay);
     }
+
 }

@@ -9,7 +9,6 @@ import java.util.Objects;
 @Entity
 public class Skill {
     private long id;
-    private String category;
     private String value;
 
     @Id
@@ -20,16 +19,6 @@ public class Skill {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "category")
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     @Basic
@@ -48,12 +37,11 @@ public class Skill {
         if (o == null || getClass() != o.getClass()) return false;
         Skill skill = (Skill) o;
         return id == skill.id &&
-                Objects.equals(category, skill.category) &&
                 Objects.equals(value, skill.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, category, value);
+        return Objects.hash(id, value);
     }
 }

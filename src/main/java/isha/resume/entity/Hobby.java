@@ -9,7 +9,6 @@ import java.util.Objects;
 @Entity
 public class Hobby {
     private long id;
-    private long idProfile;
     private String name;
 
     @Id
@@ -20,16 +19,6 @@ public class Hobby {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_profile")
-    public long getIdProfile() {
-        return idProfile;
-    }
-
-    public void setIdProfile(long idProfile) {
-        this.idProfile = idProfile;
     }
 
     @Basic
@@ -48,12 +37,11 @@ public class Hobby {
         if (o == null || getClass() != o.getClass()) return false;
         Hobby hobby = (Hobby) o;
         return id == hobby.id &&
-                idProfile == hobby.idProfile &&
                 Objects.equals(name, hobby.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idProfile, name);
+        return Objects.hash(id, name);
     }
 }
