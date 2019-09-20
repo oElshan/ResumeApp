@@ -6,7 +6,9 @@
             <h1>Welcome to the Resume!</h1>
             <p class="lead">You can create your account in 10 clicks!</p>
             <p class="lead">Find new employees for your company.</p>
-            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Launch demo modal
+            </button>
 
         </div>
     </div>
@@ -14,5 +16,30 @@
 
         dsaldmaskd
 
+    </div>
+</div>
+
+
+<!-- Триггер кнопка модали-->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Модаль -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
 </div>

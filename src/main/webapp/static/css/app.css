@@ -61,3 +61,12 @@ background-color: whitesmoke !important;
      background-color: white !important;
 
  }
+
+ .reg-close{
+     position: absolute ;
+     left: 5px ;
+ }
+ .modal-header.req-window {
+     background-color: whitesmoke;
+ }
+

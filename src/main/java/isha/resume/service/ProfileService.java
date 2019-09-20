@@ -11,16 +11,25 @@ import java.util.List;
 @Service
 public class ProfileService {
 
+
     ProfileRepository profileRepository;
    @Autowired
     public ProfileService(ProfileRepository profileRepository) {
-        this.profileRepository = profileRepository;
+
+       this.profileRepository = profileRepository;
     }
 
     @Transactional
     public List<Profile> findAll() {
         List<Profile> profilesList = profileRepository.findAll();
+
         return profilesList;
+    }
+
+    @Transactional
+    public Profile findByUid(String uid) {
+        Profile profile = profileRepository.findByUid(uid);
+        return profile;
     }
 
 }
