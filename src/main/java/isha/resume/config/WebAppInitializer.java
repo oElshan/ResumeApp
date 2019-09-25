@@ -12,13 +12,6 @@ import javax.servlet.ServletException;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-//        servletContext.addFilter("sitemesh", new SiteMeshFilter()).addMappingForUrlPatterns(null, true, "/*");
-//        FilterRegistration.Dynamic encodingFilter = servletContext.addFilter("sitemesh", new SiteMeshFilter());
-//        encodingFilter.addMappingForUrlPatterns(null, true, "/*");
-        super.onStartup(servletContext);
-    }
 
     @Override
     protected String[] getServletMappings() {
@@ -28,7 +21,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected Class<?>[] getRootConfigClasses() {
 
-        return new Class<?>[]{RootConfig.class};
+        return new Class<?>[]{RootConfig.class,SecurityConfig.class};
     }
 
     @Override

@@ -1,4 +1,4 @@
-package isha.resume.service;
+package isha.resume.services;
 
 import isha.resume.entity.Profile;
 import isha.resume.repository.ProfileRepository;
@@ -12,7 +12,8 @@ import java.util.List;
 public class ProfileService {
 
 
-    ProfileRepository profileRepository;
+   private ProfileRepository profileRepository;
+
    @Autowired
     public ProfileService(ProfileRepository profileRepository) {
 
