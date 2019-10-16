@@ -25,7 +25,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+        http
+                .authorizeRequests()
+                .antMatchers("/","/webapp/section/*.jsp","/webapp/template/*.jsp","/webapp/static/**").permitAll()
+                .anyRequest().authenticated();
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
 // TODO: 25/09/2019 добавить конфигурацию нам защиту
 
     }

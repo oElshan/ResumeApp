@@ -9,6 +9,10 @@ public class ProfileRestore {
     private long id;
     private String token;
 
+
+    @OneToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "id",nullable = false)
+    private Profile profile;
     @Id
     @SequenceGenerator(name = "profile_seq" ,schema = "profile_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_seq")

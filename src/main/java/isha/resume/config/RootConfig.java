@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(value = {"isha.resume.dao", "isha.resume.services"})
+@ComponentScan(value = { "isha.resume.services"})
 @PropertySource("classpath:app.properties")
 @EnableJpaRepositories(basePackages = "isha.resume.repository")
 @EnableTransactionManagement

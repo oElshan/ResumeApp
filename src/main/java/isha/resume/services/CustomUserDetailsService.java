@@ -18,14 +18,17 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    // TODO: 25/09/2019 реализовать user detail service 
+    // TODO: 25/09/2019 реализовать user detail service
+
+
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        Profile profile = profileRepository.findByUid(name);
+        Profile profile = profileRepository.findProfileByFirstName(name);
 
         return null;
 
     }
+
 
 
 }

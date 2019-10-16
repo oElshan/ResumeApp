@@ -9,16 +9,11 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class ProfileService {
-
-
-   private ProfileRepository profileRepository;
+public class FindProfileService {
 
     @Autowired
-    public ProfileService(ProfileRepository profileRepository) {
+    private ProfileRepository profileRepository;
 
-       this.profileRepository = profileRepository;
-    }
 
     @Transactional
     public List<Profile> findAll() {
@@ -30,5 +25,13 @@ public class ProfileService {
     public Profile findByName(String name) {
         return profileRepository.findProfileByFirstName(name);
     }
+
+    @Transactional
+    public Profile findProfileByUid(String uid) {
+        return profileRepository.findProfileByUid(uid);
+
+    }
+
+
 
 }

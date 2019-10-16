@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="include :: head"> </div>
+
+
+<body>
+<div th:replace="include :: navbar"> </div>
+<div class="container">
+                <div class="modal-header req-window">
+                    <!--todo добавить значок -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title " id="myModalLabel">Укажите ваши перcональные данные</h4>
+                </div>
+
+                    <form class="req-form" th:action="@{/registration}" id="reg"  method="post">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" class="form-control" id="name" placeholder="Имя" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="secondName">Фамилия</label>
+                            <input type="text" class="form-control" id="secondName" placeholder="Фамилия" name="secondName">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Новый пароль</label>
+                            <input type="text" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="repeatPassword">Подтверждение пароля</label>
+                            <input type="text" class="form-control" id="repeatPassword" name="repeatPassword">
+                        </div>
+                        <!--<button class="btn btn-lg btn-primary  btn-block" type="submit">Register</button>-->
+                    </form>
+
+                <div class="modal-footer">
+                    <button class="btn btn-lg btn-primary  btn-block" form="reg" type="submit">Register</button>
+                    <!--<button class="btn btn-success" form="reg" data-dismiss="modal">Registration</button>-->
+                    <!--todo привязать кнопку к форме -->
+                </div>
+</div>
+
+<div th:replace="include::js"></div>
+</body>
+</html>

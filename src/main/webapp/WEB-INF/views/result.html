@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="include :: head"> </div>
+
+
+<body>
+<div th:replace="include :: navbar"> </div>
+<div>
+    <p th:text="${name}">Non</p>
+    <p th:text="${secondName}">Non</p>
+    <p th:text="${password}">Non</p>
+</div>
+
+<div th:replace="include::js"></div>
+</body>
+</html>
