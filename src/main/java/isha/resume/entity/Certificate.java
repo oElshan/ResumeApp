@@ -1,18 +1,27 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
+// TODO: 22/10/2019 Serializable что нужно для мапинга в hiber
 @Entity
 public class Certificate {
     private long id;
     private String largeImage;
     private String smallImage;
     private String name;
+    private Profile profile;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_profile",nullable = false)
-    Profile profile;
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
     @SequenceGenerator(name = "certificate_seq" ,schema = "certificate_id_seq",allocationSize = 1)

@@ -1,18 +1,21 @@
 package isha.resume.controllers;
 
-import isha.resume.form.ReqForm;
-import isha.resume.repository.ProfileRepository;
+import isha.resume.entity.Profile;
+import isha.resume.form.SingUpForm;
+import isha.resume.services.EditProfileService;
 import isha.resume.services.FindProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+
+// TODO: 21/10/2019 добавить регистрация нового пользователя и сохранения в БД
 @Controller
 public class WelcomeController {
     @Autowired
-    private FindProfileService profileService;
+    private FindProfileService findProfileService;
+    private EditProfileService editProfileService;
 
     @RequestMapping("/")
     public String welcome() {
@@ -20,20 +23,21 @@ public class WelcomeController {
     }
 
 
-    @RequestMapping(value = "/{uid}", method = RequestMethod.GET)
-    public String getProfile(@PathVariable("uid") String uid, Model model)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String getProfile(@PathVariable("uid") Long id, Model model)
     {
+        Profile profile = findProfileService.findProfileById(id);
+
+        model.addAttribute("firstName", profile.getFirstName());
         return "/profile";
     }
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String showhome(@ModelAttribute("req") ReqForm reqForm, Model model) {
+    public String showhome(@ModelAttribute("req") SingUpForm singUpForm, Model model) {
 
-        model.addAttribute("name", reqForm.getName());
-        model.addAttribute("secondName", reqForm.getEmail());
-        model.addAttribute("password", reqForm.getPassword());
-        return "/result";
+        editProfileService.createNewProfile(singUpForm);
+        return "/edit";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)

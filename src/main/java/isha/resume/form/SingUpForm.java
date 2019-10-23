@@ -1,6 +1,6 @@
 package isha.resume.form;
 
-public class ReqForm {
+public class SingUpForm {
     private String name;
     private String secondName;
     private String email;

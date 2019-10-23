@@ -12,22 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 
-@Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService {
 
-    @Autowired
-    private ProfileRepository profileRepository;
-
-    // TODO: 25/09/2019 реализовать user detail service
-
-
-    @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        Profile profile = profileRepository.findProfileByFirstName(name);
-
-        return null;
-
-    }
 
 
 

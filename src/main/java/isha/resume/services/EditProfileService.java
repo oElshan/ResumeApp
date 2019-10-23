@@ -1,24 +1,35 @@
 package isha.resume.services;
 
-import isha.resume.entity.Profile;
-import isha.resume.form.ReqForm;
-import isha.resume.repository.ProfileRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import isha.resume.entity.*;
+import isha.resume.form.SingUpForm;
 
-public class EditProfileService {
+import java.util.List;
+/**
+ *  сервис по созданию и обновления информации профиля
+ *
+ * */
+public interface EditProfileService {
 
-    @Autowired
-    private ProfileRepository profileRepository;
+    Profile createNewProfile(SingUpForm singUpForm);
+
+    List<Skill> listSkills(long id);
+
+    void uodateSkills(long id, List<Skill> skillList);
+
+//    List<Certificate> listCertificates(long id);
+//
+//    List<Course> listCourses(long id);
+//
+//    List<Education> listEducations(long id);
+//
+//    List<Hobby> listHobbies(long id);
+//
+//    List<Language> listLanguages(long id);
+//
+//    List<Practic> listPractics(long id);
 
 
-    public Profile createProfile(ReqForm reqForm) {
-        Profile profile = new Profile();
-        profile.setFirstName(reqForm.getName());
-        profile.setLastName(reqForm.getSecondName());
-        profile.setEmail(reqForm.getEmail());
-        profile.setPasword(reqForm.getPassword());
-        return profile;
-    }
+    // TODO: 22/10/2019 добавить listSkillCategory и updateSkills и другие данные
 
 
 }

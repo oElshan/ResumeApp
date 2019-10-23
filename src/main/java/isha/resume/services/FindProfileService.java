@@ -1,36 +1,21 @@
 package isha.resume.services;
 
 import isha.resume.entity.Profile;
-import isha.resume.repository.ProfileRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import isha.resume.entity.Skill;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class FindProfileService {
+public interface FindProfileService {
 
-    @Autowired
-    private ProfileRepository profileRepository;
+    public List<Profile> findAll();
 
+    public Profile findProfileByEmail(String email);
 
-    @Transactional
-    public List<Profile> findAll() {
-        List<Profile> profilesList = profileRepository.findAll();
-        return profilesList;
-    }
+    public Profile findProfileByUid(String uid);
 
-    @Transactional
-    public Profile findByName(String name) {
-        return profileRepository.findProfileByFirstName(name);
-    }
+    public Profile findProfileById(Long id);
 
-    @Transactional
-    public Profile findProfileByUid(String uid) {
-        return profileRepository.findProfileByUid(uid);
-
-    }
 
 
 

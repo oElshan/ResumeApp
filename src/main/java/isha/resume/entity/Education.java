@@ -1,20 +1,28 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Education {
+public class Education  {
     private long id;
     private String summary;
     private int beginYear;
     private Integer finishYaer;
     private String university;
     private String faculty;
+    private Profile profile;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_profile",nullable = false)
-    Profile profile;
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
     @SequenceGenerator(name = "education_seq" ,schema = "education_id_seq",allocationSize = 1)

@@ -1,16 +1,24 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Hobby {
+public class Hobby  {
     private long id;
     private String name;
+    private Profile profile;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_profile",nullable = false)
-    Profile profile;
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     // TODO: 18/09/2019 добавить @Transient поле selected boolean для отображения выбранных хобби
     // TODO: 18/09/2019 добавить Comparable интерфейс

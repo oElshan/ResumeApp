@@ -1,21 +1,28 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-
+// TODO: 18/09/2019 создать тип атрибуты lavel и type через enum
 @Entity
-public class Language {
+public class Language  {
     private long id;
     private String name;
     private String level;
     private String type;
+    private  Profile profile;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_profile",nullable = false)
-    Profile profile;
+    public Profile getProfile() {
+        return profile;
+    }
 
-    // TODO: 18/09/2019 создать тип атрибуты lavel и type через enum
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     @Id
     @SequenceGenerator(name = "language_seq" ,schema = "language_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "language_seq")

@@ -1,11 +1,14 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
+// TODO: 18/09/2019  нужны дополнительные поля @Transient для обоработки форм при считывания данных из  страницы
+
 @Entity
-public class Practic {
+public class Practic   {
     private long id;
     private String position;
     private String company;
@@ -14,11 +17,17 @@ public class Practic {
     private String respontibilities;
     private String demo;
     private String src;
-    // TODO: 18/09/2019  нужны дополнительные поля @Transient для обоработки форм при считывания данных из  страницы
+    private Profile profile;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_profile",nullable = false)
-    Profile profile;
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
     @SequenceGenerator(name = "practic_seq" ,schema = "practic_id_seq",allocationSize = 1)

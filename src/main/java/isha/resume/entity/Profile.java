@@ -9,56 +9,136 @@ import java.util.Objects;
 
 @Entity
 public class Profile  implements Serializable {
+
     private long id;
+
     private String login;
+
     private String pasword;
+
     private String firstName;
+
     private String lastName;
+
     private String midleName;
+
     private String email;
+
     private short phone;
-    private long uid;
+
+    private String uid;
+
     private String coutry;
+
     private String city;
+
     private String summary;
+
     private String objective;
+
     private String largePhoto;
+
     private String smallPhoto;
+
     private String info;
+
     private boolean comleted;
+
     private Time created;
+
     private String vkontakte;
+
     private String skype;
+
     private String facebook;
+
     private String github;
+
     private String stackoverflow;
+
     private Date birthDay;
 
-    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private List<Certificate> certificates;
+
+    private List<Education> educations ;
+
+    private List<Course> courses ;
+
+    private List<Hobby> hobbies ;
+
+    private List<Language> language ;
+
+    private List<Practic> practics ;
+
+    private List<Skill> skills ;
+
+    @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    public List<Certificate> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificate> certificates) {
+        this.certificates = certificates;
+    }
 
     @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @OrderBy("beginYear DESC ,finishYaer DESC,id DESC ")
-    private List<Education> educations ;
+    public List<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
+    }
 
     @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @OrderBy("finishDate desc ")
-    private List<Course> courses ;
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 
     @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @OrderBy("name ASC ")
-    private List<Hobby> hobbies ;
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
 
     @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    private List<Language> language ;
+    public List<Language> getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(List<Language> language) {
+        this.language = language;
+    }
 
     @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @OrderBy("finishDate DESC ")
-    private List<Practic> practics ;
+    public List<Practic> getPractics() {
+        return practics;
+    }
+
+    public void setPractics(List<Practic> practics) {
+        this.practics = practics;
+    }
 
     @OneToMany(mappedBy = "profile",fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @OrderBy("id ASC ")
-    private List<Skill> skills ;
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
 
     @Id
     @SequenceGenerator(name = "profile_seq" ,schema = "profile_id_seq",allocationSize = 1)
@@ -144,11 +224,11 @@ public class Profile  implements Serializable {
 
     @Basic
     @Column(name = "uid")
-    public long getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(long uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

@@ -1,11 +1,12 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "skill_category", schema = "public", catalog = "resume")
-public class SkillCategory {
+public class SkillCategory  {
     private long id;
     private String category;
 
