@@ -24,9 +24,10 @@ public class WelcomeController {
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getProfile(@PathVariable("uid") Long id, Model model)
+    public String getProfile(@PathVariable("id") String id, Model model)
     {
-        Profile profile = findProfileService.findProfileById(id);
+
+        Profile profile = findProfileService.findProfileById(Long.parseLong(id));
 
         model.addAttribute("firstName", profile.getFirstName());
         return "/profile";

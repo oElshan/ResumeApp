@@ -24,7 +24,7 @@ public class Profile  implements Serializable {
 
     private String email;
 
-    private short phone;
+    private String phone;
 
     private String uid;
 
@@ -214,11 +214,11 @@ public class Profile  implements Serializable {
 
     @Basic
     @Column(name = "phone")
-    public short getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(short phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
