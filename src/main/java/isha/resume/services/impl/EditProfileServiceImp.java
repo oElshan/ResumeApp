@@ -27,6 +27,7 @@ public class EditProfileServiceImp implements EditProfileService {
         profile.setEmail(singUpForm.getEmail());
         profile.setPasword(singUpForm.getPassword());
         profile.setUid(DataUtil.generateProfileUid(singUpForm));
+        profile.setComleted(false);
         profileRepository.save(profile);
         return profile;
     }
