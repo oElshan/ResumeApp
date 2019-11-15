@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(name = "hobby")
 public class Hobby  {
     private long id;
     private String name;

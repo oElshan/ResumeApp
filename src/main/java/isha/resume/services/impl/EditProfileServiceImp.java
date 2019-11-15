@@ -18,6 +18,7 @@ public class EditProfileServiceImp implements EditProfileService {
     private ProfileRepository profileRepository;
 
 
+    // TODO: 12/11/2019 передадим этот обьект в другой метод контроллера  
     @Override
     @Transactional
     public Profile createNewProfile(SingUpForm singUpForm) {

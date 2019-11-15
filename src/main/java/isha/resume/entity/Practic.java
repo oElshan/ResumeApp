@@ -8,6 +8,7 @@ import java.util.Objects;
 // TODO: 18/09/2019  нужны дополнительные поля @Transient для обоработки форм при считывания данных из  страницы
 
 @Entity
+@Table(name = "practic")
 public class Practic   {
     private long id;
     private String position;

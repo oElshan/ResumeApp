@@ -6,6 +6,7 @@ import java.util.Objects;
 
 // TODO: 22/10/2019 Serializable что нужно для мапинга в hiber
 @Entity
+@Table(name = "certificate")
 public class Certificate {
     private long id;
     private String largeImage;

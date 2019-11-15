@@ -6,6 +6,7 @@ import java.util.Objects;
 
 // TODO: 18/09/2019 создать тип атрибуты lavel и type через enum
 @Entity
+@Table(name = "language")
 public class Language  {
     private long id;
     private String name;

@@ -58,6 +58,9 @@ public class RootConfig {
     @Bean
     Properties getHibernateProperties() {
         Properties properties = new Properties();
+        properties.put("javax.persistence.validation.mode", "none");
+        properties.put("hibernate.show_sql", "true");
+//        properties.put("org.hibernate.flushMode", "COMMIT");
         return properties;
     }
     @Bean
@@ -72,7 +75,7 @@ public class RootConfig {
     }
 
     @Bean
-    public JpaTransactionManager getTransactionManager() {
+    public JpaTransactionManager transactionManager() {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactory());
         return jpaTransactionManager;

@@ -2,12 +2,12 @@ package isha.resume.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "profile")
 public class Profile  implements Serializable {
 
     private long id;
@@ -44,7 +44,7 @@ public class Profile  implements Serializable {
 
     private boolean comleted;
 
-    private Time created;
+    private Date created;
 
     private String vkontakte;
 
@@ -141,8 +141,8 @@ public class Profile  implements Serializable {
     }
 
     @Id
-    @SequenceGenerator(name = "profile_seq" ,schema = "profile_id_seq",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_seq")
+    @SequenceGenerator(name = "profile_seq" ,sequenceName = "profile_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_id_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
@@ -313,12 +313,13 @@ public class Profile  implements Serializable {
     }
 
     @Basic
-    @Column(name = "created")
-    public Time getCreated() {
+    @Column(name = "created", insertable =false )
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(Time created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 

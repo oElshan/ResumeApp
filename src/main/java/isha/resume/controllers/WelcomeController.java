@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class WelcomeController {
     @Autowired
     private FindProfileService findProfileService;
+    @Autowired
     private EditProfileService editProfileService;
 
     @RequestMapping("/")
@@ -37,12 +38,17 @@ public class WelcomeController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String showhome(@ModelAttribute("req") SingUpForm singUpForm, Model model) {
 
-        editProfileService.createNewProfile(singUpForm);
+        model.addAttribute( "newProfile",editProfileService.createNewProfile(singUpForm));
         return "/edit";
     }
+
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit() {
         return "/edit";
+    }
+    @RequestMapping(value = "/edit/skills", method = RequestMethod.GET)
+    public String editSkills() {
+        return "";
     }
 }

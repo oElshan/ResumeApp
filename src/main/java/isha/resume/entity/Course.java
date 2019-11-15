@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "course")
 public class Course   {
     private long id;
     private String name;

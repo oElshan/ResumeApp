@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(name = "education")
 public class Education  {
     private long id;
     private String summary;
