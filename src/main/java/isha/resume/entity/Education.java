@@ -26,7 +26,7 @@ public class Education  {
     }
 
     @Id
-    @SequenceGenerator(name = "education_seq" ,schema = "education_id_seq",allocationSize = 1)
+    @SequenceGenerator(name = "education_seq" ,sequenceName = "education_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "education_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {

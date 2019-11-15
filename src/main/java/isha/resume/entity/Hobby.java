@@ -24,7 +24,7 @@ public class Hobby  {
     // TODO: 18/09/2019 добавить @Transient поле selected boolean для отображения выбранных хобби
     // TODO: 18/09/2019 добавить Comparable интерфейс
     @Id
-    @SequenceGenerator(name = "hobby_seq" ,schema = "hobby_id_seq",allocationSize = 1)
+    @SequenceGenerator(name = "hobby_seq" ,sequenceName = "hobby_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "hobby_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {

@@ -11,7 +11,7 @@ public class SkillCategory  {
     private String category;
 
     @Id
-    @SequenceGenerator(name = "skillCat_seq" ,schema = "skill_cat_id_seq",allocationSize = 1)
+    @SequenceGenerator(name = "skillCat_seq" ,sequenceName = "skill_cat_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "skillCat_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {

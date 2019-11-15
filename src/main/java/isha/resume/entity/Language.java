@@ -25,7 +25,7 @@ public class Language  {
     }
 
     @Id
-    @SequenceGenerator(name = "language_seq" ,schema = "language_id_seq",allocationSize = 1)
+    @SequenceGenerator(name = "language_seq" ,sequenceName = "language_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "language_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {

@@ -25,7 +25,7 @@ public class Certificate {
     }
 
     @Id
-    @SequenceGenerator(name = "certificate_seq" ,schema = "certificate_id_seq",allocationSize = 1)
+    @SequenceGenerator(name = "certificate_seq" ,sequenceName = "certificate_id_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "certificate_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {
