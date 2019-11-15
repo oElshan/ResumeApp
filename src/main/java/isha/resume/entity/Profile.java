@@ -142,7 +142,7 @@ public class Profile  implements Serializable {
 
     @Id
     @SequenceGenerator(name = "profile_seq" ,sequenceName = "profile_id_seq",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_seq")
     @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
