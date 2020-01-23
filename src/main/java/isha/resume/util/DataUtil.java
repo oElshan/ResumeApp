@@ -1,6 +1,6 @@
 package isha.resume.util;
 
-import isha.resume.form.SingUpForm;
+import isha.resume.form.SignUpForm;
 import org.apache.commons.lang.WordUtils;
 
 import java.util.Random;
@@ -15,7 +15,7 @@ public class DataUtil {
         return WordUtils.capitalize(normalizeName(name));
     }
 
-    public static String generateProfileUid(SingUpForm profile) {
+    public static String generateProfileUid(SignUpForm profile) {
         return normalizeName(profile.getName()) + UID_DELIMETER + normalizeName(profile.getSecondName());
     }
 

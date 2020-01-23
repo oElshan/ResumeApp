@@ -1,7 +1,7 @@
 package isha.resume.services;
 
 import isha.resume.entity.*;
-import isha.resume.form.SingUpForm;
+import isha.resume.form.SignUpForm;
 
 import java.util.List;
 /**
@@ -10,11 +10,11 @@ import java.util.List;
  * */
 public interface EditProfileService {
 
-    Profile createNewProfile(SingUpForm singUpForm);
+    Profile createNewProfile(SignUpForm signUpForm);
 
     List<Skill> listSkills(long id);
 
-    void uodateSkills(long id, List<Skill> skillList);
+    void updateSkills(long id, List<Skill> skillList);
 
 //    List<Certificate> listCertificates(long id);
 //

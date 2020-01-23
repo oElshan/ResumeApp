@@ -1,7 +1,7 @@
 package isha.resume.services.impl;
 
 import isha.resume.entity.*;
-import isha.resume.form.SingUpForm;
+import isha.resume.form.SignUpForm;
 import isha.resume.repository.ProfileRepository;
 import isha.resume.services.EditProfileService;
 import isha.resume.util.DataUtil;
@@ -21,13 +21,13 @@ public class EditProfileServiceImp implements EditProfileService {
     // TODO: 12/11/2019 передадим этот обьект в другой метод контроллера  
     @Override
     @Transactional
-    public Profile createNewProfile(SingUpForm singUpForm) {
+    public Profile createNewProfile(SignUpForm signUpForm) {
         Profile profile = new Profile();
-        profile.setFirstName(singUpForm.getName());
-        profile.setLastName(singUpForm.getSecondName());
-        profile.setEmail(singUpForm.getEmail());
-        profile.setPasword(singUpForm.getPassword());
-        profile.setUid(DataUtil.generateProfileUid(singUpForm));
+        profile.setFirstName(signUpForm.getName());
+        profile.setLastName(signUpForm.getSecondName());
+        profile.setEmail(signUpForm.getEmail());
+        profile.setPasword(signUpForm.getPassword());
+        profile.setUid(DataUtil.generateProfileUid(signUpForm));
         profile.setComleted(false);
         profileRepository.save(profile);
         return profile;
@@ -41,7 +41,7 @@ public class EditProfileServiceImp implements EditProfileService {
 
     @Override
     @Transactional
-    public void uodateSkills(long id, List<Skill> skillList) {
+    public void updateSkills(long id, List<Skill> skillList) {
         Profile profile =profileRepository.findAllById(id);
         profile.setSkills(skillList);
         profileRepository.save(profile);

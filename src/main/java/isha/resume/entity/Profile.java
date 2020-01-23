@@ -1,6 +1,15 @@
 package isha.resume.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import isha.resume.annotations.constraints.Phone;
+import isha.resume.util.Views;
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,19 +20,29 @@ import java.util.Objects;
 public class Profile  implements Serializable {
 
     private long id;
-
     private String login;
-
+    @JsonView(Views.SingUpImportant.class)
     private String pasword;
-
+//    @NotNull
+//    @Pattern(regexp = "^[a-zA-Z]+$")
+//    @Size(min = 1, max = 20)
+    @JsonView(Views.SingUpImportant.class)
     private String firstName;
 
+//    @NotNull
+//    @Pattern(regexp = "^[a-zA-Z]+$")
+//    @Size(min = 1, max = 20)
+    @JsonView(Views.SingUpImportant.class)
     private String lastName;
 
     private String midleName;
 
+//    @Email
+//    @NotNull
+    @JsonView(Views.SingUpImportant.class)
     private String email;
 
+//    @Phone
     private String phone;
 
     private String uid;
@@ -46,14 +65,15 @@ public class Profile  implements Serializable {
 
     private Date created;
 
+//    @URL
     private String vkontakte;
-
+//    @URL
     private String skype;
-
+//    @URL
     private String facebook;
-
+//    @URL
     private String github;
-
+//    @URL
     private String stackoverflow;
 
     private Date birthDay;
