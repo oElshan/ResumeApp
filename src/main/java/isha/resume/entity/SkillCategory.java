@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "skill_category", schema = "public", catalog = "resume")
-public class SkillCategory  {
+public class SkillCategory implements Serializable {
     private long id;
     private String category;
 

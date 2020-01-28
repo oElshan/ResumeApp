@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "education")
-public class Education  {
+public class Education implements Serializable {
     private long id;
     private String summary;
     private int beginYear;

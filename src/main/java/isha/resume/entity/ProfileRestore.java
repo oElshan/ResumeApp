@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "profile_restore", schema = "public", catalog = "resume")
-public class ProfileRestore  {
+public class ProfileRestore implements Serializable {
     private long id;
     private String token;
     private Profile profile;

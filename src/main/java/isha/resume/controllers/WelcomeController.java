@@ -55,6 +55,7 @@ public class WelcomeController {
     public @ResponseBody Profile regProfile(@RequestBody SignUpForm signUpForm) {
         System.out.println(signUpForm.toString());
         Profile newprofile = editProfileService.createNewProfile(signUpForm);
+
         return newprofile;
     }
 

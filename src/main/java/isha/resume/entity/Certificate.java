@@ -4,10 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-// TODO: 22/10/2019 Serializable что нужно для мапинга в hiber
 @Entity
 @Table(name = "certificate")
-public class Certificate {
+public class Certificate implements Serializable {
     private long id;
     private String largeImage;
     private String smallImage;

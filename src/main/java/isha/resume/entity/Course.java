@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "course")
-public class Course   {
+public class Course  implements Serializable {
     private long id;
     private String name;
     private String shcool;

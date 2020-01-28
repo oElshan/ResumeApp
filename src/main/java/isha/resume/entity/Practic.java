@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "practic")
-public class Practic   {
+public class Practic  implements Serializable {
     private long id;
     private String position;
     private String company;

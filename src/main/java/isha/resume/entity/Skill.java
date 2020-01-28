@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Skill  {
+public class Skill implements Serializable {
     private long id;
     private String value;
     private Profile profile;

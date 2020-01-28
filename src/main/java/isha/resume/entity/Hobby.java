@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "hobby")
-public class Hobby  {
+public class Hobby implements Serializable {
     private long id;
     private String name;
     private Profile profile;
