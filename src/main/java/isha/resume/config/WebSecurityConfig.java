@@ -2,21 +2,21 @@ package isha.resume.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @EnableWebSecurity
-public class WebSecurityConfig {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+    // TODO: 29/01/2020 сконфигурировать скюрити
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build());
-        return manager;
+
+
     }
 }
