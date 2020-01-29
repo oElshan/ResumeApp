@@ -1,20 +1,33 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
+// TODO: 18/09/2019 создать тип атрибуты lavel и type через enum
 @Entity
-public class Language {
+@Table(name = "language")
+public class Language implements Serializable {
     private long id;
     private String name;
     private String level;
     private String type;
+    private  Profile profile;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "language_seq" ,sequenceName = "language_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "language_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

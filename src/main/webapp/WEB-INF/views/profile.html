@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="include :: head"> </div>
+
+<body id="profileBody">
+<div th:replace="include :: navbar"> </div>
+
+    <div class="container profile">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-md-4">
+                <div th:replace="profile-avatar::avatar"></div>
+                <div class="hidden-xs">
+                    <div th:replace="profile-languages::languages"></div>
+                    <div th:replace="profile-hobby::hobby"></div>
+                </div>
+
+            </div>
+            <div class="col-lg-8 col-sm-6 col-md-8 ">
+                <div th:replace="profile-objective::objective"></div>
+                <div th:replace="profile-technicalSkills::technical-skills" ></div>
+                <div th:replace="profile-practic::practic" ></div>
+                <div th:replace="profile-certificates::certificates" ></div>
+                <div th:replace="profile-courses::courses" ></div>
+                <div th:replace="profile-education::education" ></div>
+                <div class="visible-xs">
+                    <div th:replace="profile-languages::languages"></div>
+                    <div th:replace="profile-hobby::hobby"></div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+<div th:replace="include::js"></div>
+
+</body>
+</html>

@@ -1,22 +1,34 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Education {
+@Table(name = "education")
+public class Education implements Serializable {
     private long id;
     private String summary;
     private int beginYear;
     private Integer finishYaer;
     private String university;
     private String faculty;
+    private Profile profile;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "education_seq" ,sequenceName = "education_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "education_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

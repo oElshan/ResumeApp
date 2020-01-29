@@ -1,14 +1,15 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
+// TODO: 18/09/2019  нужны дополнительные поля @Transient для обоработки форм при считывания данных из  страницы
+
 @Entity
-public class Practic {
+@Table(name = "practic")
+public class Practic  implements Serializable {
     private long id;
     private String position;
     private String company;
@@ -17,9 +18,22 @@ public class Practic {
     private String respontibilities;
     private String demo;
     private String src;
+    private Profile profile;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "practic_seq" ,sequenceName = "practic_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "practic_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

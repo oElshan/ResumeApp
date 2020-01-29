@@ -1,35 +1,35 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Skill {
+public class Skill implements Serializable {
     private long id;
-    private String category;
     private String value;
+    private Profile profile;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "skill_seq" ,sequenceName = "skill_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "skill_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "category")
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     @Basic
@@ -48,12 +48,11 @@ public class Skill {
         if (o == null || getClass() != o.getClass()) return false;
         Skill skill = (Skill) o;
         return id == skill.id &&
-                Objects.equals(category, skill.category) &&
                 Objects.equals(value, skill.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, category, value);
+        return Objects.hash(id, value);
     }
 }

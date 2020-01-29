@@ -1,11 +1,15 @@
- body {
-background-color: whitesmoke !important;
+
+
+body {
+background-color: #f9f9f9 !important;
 }
+
 /*.img-responsive {*/
     /*max-width: 20%;*/
 /*}*/
  .container .profile {
      position: relative;
+
 
  }
 .avatarimg {
@@ -61,3 +65,12 @@ background-color: whitesmoke !important;
      background-color: white !important;
 
  }
+
+ .reg-close{
+     position: absolute ;
+     left: 5px ;
+ }
+ .modal-header.req-window {
+     background-color: #F5F5F5;
+ }
+

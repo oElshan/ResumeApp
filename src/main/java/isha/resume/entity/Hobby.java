@@ -1,35 +1,38 @@
 package isha.resume.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Hobby {
+@Table(name = "hobby")
+public class Hobby implements Serializable {
     private long id;
-    private long idProfile;
     private String name;
+    private Profile profile;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_profile",nullable = false)
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    // TODO: 18/09/2019 добавить @Transient поле selected boolean для отображения выбранных хобби
+    // TODO: 18/09/2019 добавить Comparable интерфейс
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "hobby_seq" ,sequenceName = "hobby_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "hobby_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_profile")
-    public long getIdProfile() {
-        return idProfile;
-    }
-
-    public void setIdProfile(long idProfile) {
-        this.idProfile = idProfile;
     }
 
     @Basic
@@ -48,12 +51,11 @@ public class Hobby {
         if (o == null || getClass() != o.getClass()) return false;
         Hobby hobby = (Hobby) o;
         return id == hobby.id &&
-                idProfile == hobby.idProfile &&
                 Objects.equals(name, hobby.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idProfile, name);
+        return Objects.hash(id, name);
     }
 }

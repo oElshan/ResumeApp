@@ -1,16 +1,30 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "profile_restore", schema = "public", catalog = "resume")
-public class ProfileRestore {
+public class ProfileRestore implements Serializable {
     private long id;
     private String token;
+    private Profile profile;
+
+    @OneToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "id",nullable = false)
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "profile_seq" ,sequenceName = "profile_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "profile_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }

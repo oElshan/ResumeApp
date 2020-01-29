@@ -1,16 +1,19 @@
 package isha.resume.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "skill_category", schema = "public", catalog = "resume")
-public class SkillCategory {
+public class SkillCategory implements Serializable {
     private long id;
     private String category;
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name = "skillCat_seq" ,sequenceName = "skill_cat_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "skillCat_seq")
+    @Column(name = "id",unique = true,nullable = false)
     public long getId() {
         return id;
     }
