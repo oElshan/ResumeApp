@@ -15,7 +15,7 @@ public class CurrentProfile extends User {
 
 
     public CurrentProfile(Profile profile) {
-        super(profile.getFirstName(), profile.getPasword(), true, true, true, true, Collections.singleton(new SimpleGrantedAuthority("USER")));
+        super(profile.getFirstName(), profile.getPasword(), true, true, true, true, Collections.singleton(new SimpleGrantedAuthority(Role.USER.name())));
         this.id = profile.getId();
         this.name = profile.getFirstName();
 

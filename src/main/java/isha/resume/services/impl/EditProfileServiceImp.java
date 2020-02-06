@@ -1,7 +1,7 @@
 package isha.resume.services.impl;
 
 import isha.resume.entity.*;
-import isha.resume.form.SignUpForm;
+import isha.resume.dto.SignUpForm;
 import isha.resume.repository.ProfileRepository;
 import isha.resume.services.EditProfileService;
 import isha.resume.util.DataUtil;

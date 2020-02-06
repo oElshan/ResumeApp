@@ -1,7 +1,7 @@
 package isha.resume.services;
 
 import isha.resume.entity.*;
-import isha.resume.form.SignUpForm;
+import isha.resume.dto.SignUpForm;
 
 import java.util.List;
 /**

@@ -14,10 +14,11 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"isha.resume.controllers","isha.resume.filters"})
+@ComponentScan(basePackages = {"isha.resume.*"})
 public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
@@ -25,19 +26,26 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("../webapp/media/*");
-        registry.addResourceHandler("../resources/*");
-        registry.addResourceHandler("../webapp/static/*");
+
+        registry.addResourceHandler("static/*");
+        registry.addResourceHandler("media/*");
+//        registry.addResourceHandler("../webapp/media/*").addResourceLocations("../webapp/media/");
+//        registry.addResourceHandler("/favicon.ico").addResourceLocations("/favicon.ico");
+//        registry.addResourceHandler("/browserconfig.xml").addResourceLocations("/browserconfig.xml");
 
     }
+//
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(this.applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
+//        templateResolver.setPrefix("isha/resume/");
         templateResolver.setSuffix(".html");
         templateResolver.setCacheable(false);
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setOrder(0);
         return templateResolver;
     }
 
@@ -46,6 +54,7 @@ public class WebConfig implements WebMvcConfigurer {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.addDialect(new SpringSecurityDialect());
+        templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
     }
 
@@ -55,7 +64,8 @@ public class WebConfig implements WebMvcConfigurer {
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         viewResolver.setCache(false);
-        viewResolver.setOrder(1);
+//        viewResolver.setCache(false);
+//        viewResolver.setOrder(1);
         return viewResolver;
     }
 

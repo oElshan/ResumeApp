@@ -1,18 +1,8 @@
 package isha.resume.config;
-
-import isha.resume.filters.SiteMeshFilter;
-import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.DelegatingFilterProxy;
-import org.springframework.web.filter.RequestContextFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
+// TODO: 29/01/2020 добавить securoty config
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 
@@ -24,8 +14,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected Class<?>[] getRootConfigClasses() {
 
-//        return new Class<?>[]{RootConfig.class,SecurityConfig.class};
-        return new Class<?>[]{RootConfig.class};
+        return new Class<?>[]{RootConfig.class,WebSecurityConfig.class};
+//        return new Class<?>[]{RootConfig.class};
     }
 
     @Override
@@ -34,16 +24,15 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     }
 
 
-        @Override
-        protected Filter[] getServletFilters() {
-        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-        characterEncodingFilter.setEncoding("UTF-8");
-//        return new Filter[]{ characterEncodingFilter, new SiteMeshFilter() };
-        return new Filter[]{ characterEncodingFilter };
-    }
-
-
-    // TODO: 30/09/2019 Регистрация фильтра
+//        @Override
+//        protected Filter[] getServletFilters() {
+//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+//        characterEncodingFilter.setEncoding("UTF-8");
+//       return new Filter[]{ characterEncodingFilter, new SiteMeshFilter() };
+//        return new Filter[]{ characterEncodingFilter };
+//    }
+//
+//
 //    private void registerFilters(ServletContext container, WebApplicationContext ctx) {
 //        registerFilter(container, ctx.getBean(ResumeFilter.class));
 //        registerFilter(container, new CharacterEncodingFilter("UTF-8", true));

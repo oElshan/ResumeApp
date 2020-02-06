@@ -1,6 +1,6 @@
 package isha.resume.util;
 
-import isha.resume.form.SignUpForm;
+import isha.resume.dto.SignUpForm;
 import org.apache.commons.lang.WordUtils;
 
 import java.util.Random;

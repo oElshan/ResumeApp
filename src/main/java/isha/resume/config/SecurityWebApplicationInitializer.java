@@ -1,15 +1,16 @@
 package isha.resume.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.ServletContext;
 
-// TODO: 28/01/2020  добавить фильтры до SpringSecurityFilterChain
 public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
+
     @Override
     protected void beforeSpringSecurityFilterChain(ServletContext servletContext) {
-
-
-        super.beforeSpringSecurityFilterChain(servletContext);
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        insertFilters(servletContext, characterEncodingFilter);
     }
 }
