@@ -23,7 +23,7 @@ public class WelcomeController {
 
     @RequestMapping("/")
     public String welcome() {
-        return "/welcome";
+        return "welcome";
     }
 
 
@@ -33,35 +33,36 @@ public class WelcomeController {
 
         Profile profile = findProfileService.findProfileById(Long.parseLong(id));
         model.addAttribute("firstName", profile.getFirstName());
-        return "/profile";
+        return "profile";
     }
 
 
-//    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-//    public String showhome(@Valid @ModelAttribute("req") SignUpForm signUpForm, BindingResult bindingResult, Model model) {
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("singUpErrors", bindingResult);
-//            return "/welcome";
-//        }
-//        model.addAttribute( "newProfile",editProfileService.createNewProfile(signUpForm));
-//        return "/edit";
-//    }
-//
-//
-  @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
-    public String register( ) {
-        return "/sign-up";
+    @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+    public String showhome(@Valid @ModelAttribute("req") SignUpForm signUpForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "sign-up";
+        }
+        // TODO: 09/02/2020 авторизация через Spring Security
+        model.addAttribute( "newProfile",editProfileService.createNewProfile(signUpForm));
+        return "edit";
+    }
+
+
+    @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
+    public String register(Model model) {
+        model.addAttribute("signUpForm", new SignUpForm());
+        return "sign-up";
     }
 
     @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
     public String login( ) {
-        return "/sign-in";
+        return "sign-in";
     }
 
-    @RequestMapping(value = "/signupForm", method = RequestMethod.POST,produces={"application/json"})
-    @ResponseBody
-    public String regProfile(@RequestBody SignUpForm signUpForm) {
-        logger.info(signUpForm.toString());
+//    @RequestMapping(value = "/signupForm", method = RequestMethod.POST,produces={"application/json"})
+//    @ResponseBody
+//    public String regProfile(@RequestBody SignUpForm signUpForm) {
+//        logger.info(signUpForm.toString());
 
 //        Profile profile = findProfileService.findProfileByEmail(signUpForm.getEmail());
 //        if (profile != null) {
@@ -70,13 +71,13 @@ public class WelcomeController {
 //            SecurityContextHolder.getContext().setAuthentication(authentication);
 //        }
 //        return "redirect:/edit";
-        return "OK";
-    }
+//        return "OK";
+//    }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit() {
-        return "/edit";
+        return "edit";
     }
 
     @RequestMapping(value = "/edit/skills", method = RequestMethod.GET)

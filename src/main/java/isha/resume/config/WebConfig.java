@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.*;
-import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -27,45 +26,54 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-        registry.addResourceHandler("static/*");
-        registry.addResourceHandler("media/*");
-//        registry.addResourceHandler("../webapp/media/*").addResourceLocations("../webapp/media/");
-//        registry.addResourceHandler("/favicon.ico").addResourceLocations("/favicon.ico");
-//        registry.addResourceHandler("/browserconfig.xml").addResourceLocations("/browserconfig.xml");
+//        registry.addResourceHandler("static/*");
+//        registry.addResourceHandler("media/*");
+        registry.addResourceHandler("/static/font/**").addResourceLocations("/static/images/");
+        registry.addResourceHandler("/media/**").addResourceLocations("/static/images/");
+        registry.addResourceHandler("/static/css/**").addResourceLocations("/static/css/");
+        registry.addResourceHandler("/static/js/**").addResourceLocations("/static/js/");
 
     }
 //
-
-    @Bean
-    public SpringResourceTemplateResolver templateResolver() {
+@Bean
+    public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(this.applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
-//        templateResolver.setPrefix("isha/resume/");
         templateResolver.setSuffix(".html");
-        templateResolver.setCacheable(false);
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setOrder(0);
+        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCharacterEncoding("UTF-8");
+
+    // Template cache is true by default. Set to false if you want
+        // templates to be automatically updated when modified.
+//        templateResolver.setCacheable(true);
         return templateResolver;
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine() {
+    public SpringTemplateEngine templateEngine(){
+        // SpringTemplateEngine automatically applies SpringStandardDialect and
+        // enables Spring's own MessageSource message resolution mechanisms.
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
-        templateEngine.addDialect(new SpringSecurityDialect());
+        // Enabling the SpringEL compiler with Spring 4.2.4 or newer can
+        // speed up execution in most scenarios, but might be incompatible
+        // with specific cases when expressions in one template are reused
+        // across different data types, so this flag is "false" by default
+        // for safer backwards compatibility.
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
     }
 
     @Bean
-    public ThymeleafViewResolver viewResolver() {
+    public ThymeleafViewResolver viewResolver(){
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
-        viewResolver.setCache(false);
-//        viewResolver.setCache(false);
+        // NOTE 'order' and 'viewNames' are optional
 //        viewResolver.setOrder(1);
+//        viewResolver.setViewNames(new String[] {".html", ".xhtml"});
+//        viewResolver.setViewNames(".html");
         return viewResolver;
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
 <div th:replace="include :: head"> </div>
 
 
@@ -23,27 +24,43 @@
             </div>
 
             <div class="signUpForm ">
-                <form class="sign-up" action="/signupForm" method="post" >
+                <form class="sign-up" th:action="@{/sign-up}"  th:object="${signUpForm}" method="post" >
+                    <!--<div th:class="${#fields.hasErrors('name')} ? 'form-group has-error' : 'form-group'">>-->
                     <div class="form-group">
                         <label for="name">Имя</label>
-                        <input type="text" class="form-control" id="name" placeholder="Имя" name="name">
-                        <!--<div class="alert alert-danger" id = "dangerName ">...</div>-->
+                        <input type="text" class="form-control" id="name" placeholder="Имя" name="name" th:field="*{name}">
+                        <th:block th:if="${#fields.hasErrors('name')}">
+                            <div th:errorclass="alert alert-danger" >Please enter valid username </div>
+                        </th:block>
                     </div>
+                    <!--<div th:if="${#fields.hasErrors('name')}">-->
+                        <!--<span class="help-block req-window  " >Please enter valid username</span>-->
+                    <!--</div>-->
                     <div class="form-group">
                         <label for="secondName">Фамилия</label>
                         <input type="text" class="form-control" id="secondName" placeholder="Фамилия" name="secondName">
+
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" id="email" placeholder="email" name="email">
+                        <!--<th:block th:if="${#fields.hasErrors('email')}">-->
+                            <!--<div th:errorclass="invalid-input" th:errors="*{email}"></div>-->
+                        <!--</th:block>-->
                     </div>
                     <div class="form-group">
                         <label for="password">Новый пароль</label>
                         <input type="text" class="form-control" id="password" name="password">
+                        <!--<th:block th:if="${#fields.hasErrors('password')}">-->
+                            <!--<div th:errorclass="invalid-input" th:errors="*{password}"></div>-->
+                        <!--</th:block>-->
                     </div>
                     <div class="form-group">
                         <label for="repeatPassword">Подтверждение пароля</label>
                         <input type="text" class="form-control" id="repeatPassword" name="repeatPassword">
+                        <!--<th:block th:if="${#fields.hasErrors('repeatPassword')}">-->
+                            <!--<div th:errorclass="invalid-input" th:errors="*{repeatPassword}"></div>-->
+                        <!--</th:block>-->
                     </div>
                     <button type="submit" class="btn btn-success btn-lg " id="submitSignUp" >Register</button>
                 </form>
